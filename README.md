@@ -1,0 +1,1 @@
+It's a project containing 3 tests on Instagram app
