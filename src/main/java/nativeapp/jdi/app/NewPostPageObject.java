@@ -62,7 +62,7 @@ public class NewPostPageObject {
     public void finishPost() throws InterruptedException {
         new Timer(1000L).wait(() ->
                 newPostPageObject.nextButton.click());
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         newPostPageObject.nextButton.click();
     }
 }
