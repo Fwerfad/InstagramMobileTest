@@ -59,11 +59,10 @@ public class NewPostPageObject {
         newPostPageObject.nextButton.click();
     }
 
-    public void finishPost(String text) {
+    public void finishPost() throws InterruptedException {
         new Timer(1000L).wait(() ->
                 newPostPageObject.nextButton.click());
-        new Timer(1000L).wait(()->
-                newPostPageObject.postTextField.setValue(text));
+        Thread.sleep(2000);
         newPostPageObject.nextButton.click();
     }
 }
