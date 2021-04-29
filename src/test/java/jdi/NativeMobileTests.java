@@ -1,6 +1,7 @@
 package jdi;
 
 import com.epam.jdi.light.mobile.elements.common.MobileFileManager;
+import com.epam.jdi.tools.Timer;
 import io.appium.java_client.AppiumDriver;
 import jdi.setup.TestInit;
 import org.testng.annotations.AfterClass;
@@ -21,11 +22,6 @@ public class NativeMobileTests extends TestInit {
     final String FILE_NAME = "resources/truecat.jpg";
     final String postText = "What a nice cat meme for an Appium mobile test";
 
-    @Test
-    public void firstLoginTest() {
-        loginTestLogic(false);
-    }
-
     @Test()
     public void loginTest() {
         loginTestLogic(true);
@@ -40,7 +36,7 @@ public class NativeMobileTests extends TestInit {
     @Test
     public void newPostTest() {
         startPage.loginUsingGoogleCredos.click();
-        postTestLogic("This post was made by Appium mobile gang", true);
+        postTestLogic("This post was made by Appium mobile test", true);
     }
 
     @Test
@@ -60,12 +56,14 @@ public class NativeMobileTests extends TestInit {
     }
 
     private void loginTestLogic(boolean closeModal) {
-        if (closeModal)
+        new Timer(2000L).wait(() -> {
             googleModal.out.click();
+        });
         startPage.changeLanguage.click();
         startPage.englishLanguage.click();
         startPage.loginButton.click();
         loginForm.login(defaultUser, closeModal);
+        newPostPageObject.newPostButton.isDisplayed();
     }
 
     public static void postTestLogic(String text, boolean useCamera) {
@@ -77,6 +75,7 @@ public class NativeMobileTests extends TestInit {
             newPostPageObject.useGallery();
         }
         newPostPageObject.finishPost(text);
+        newPostPageObject.newPostButton.isDisplayed();
     }
 
     public static void executeScript(String script, Map<String, Object> args) {

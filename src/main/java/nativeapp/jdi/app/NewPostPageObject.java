@@ -20,14 +20,23 @@ public class NewPostPageObject {
     @MobileFindBy(id = "com.instagram.android:id/next_button_imageview")
     public MobileAppUIElement nextButton;
 
+    @MobileFindBy(id = "com.instagram.android:id/save")
+    public MobileAppUIElement othersNextButton;
+
     @MobileFindBy(id = "com.instagram.android:id/caption_text_view")
     public TextField postTextField;
 
     @MobileFindBy(id = "com.instagram.android:id/gallery_folder_menu_alt")
     public MobileAppUIElement openGalleryButton;
 
-    @MobileFindBy(id = "com.instagram.android:id/gallery_preview_button")
+    @MobileFindBy(xpath = "//*[@resource-id='com.instagram.android:id/recycler_view']/*[5]")
     public MobileAppUIElement openCameraGalleryButton;
+
+    @MobileFindBy(xpath = "//*[@resource-id='com.instagram.android:id/recycler_view']/*[2]")
+    public MobileAppUIElement openOthersButton;
+
+    @MobileFindBy(xpath = "//*[@resource-id='com.android.documentsui:id/dir_list']/*[1]")
+    public MobileAppUIElement chooseOthersPhoto;
 
     public void startNewPostCreation() {
         newPostButton.click();
@@ -39,16 +48,22 @@ public class NewPostPageObject {
     }
 
     public void useGallery() {
-        new Timer(2000L).wait(() ->
-                newPostPageObject.openGalleryButton.click());
-        newPostPageObject.openCameraGalleryButton.click();
+        newPostPageObject.openGalleryButton.click();
+        if (newPostPageObject.openCameraGalleryButton.isDisplayed())
+            newPostPageObject.openCameraGalleryButton.click();
+        else {
+            newPostPageObject.openOthersButton.click();
+            newPostPageObject.chooseOthersPhoto.click();
+            newPostPageObject.othersNextButton.click();
+        }
         newPostPageObject.nextButton.click();
     }
 
     public void finishPost(String text) {
         new Timer(1000L).wait(() ->
                 newPostPageObject.nextButton.click());
-        newPostPageObject.postTextField.setValue(text);
+        new Timer(1000L).wait(()->
+                newPostPageObject.postTextField.setValue(text));
         newPostPageObject.nextButton.click();
     }
 }
