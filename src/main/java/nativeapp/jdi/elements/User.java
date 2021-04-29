@@ -1,8 +1,8 @@
 package nativeapp.jdi.elements;
 
 public class User {
-    public String email;
     public String password;
+    public String email;
 
     public static User defaultUser = new User("", "");
 
