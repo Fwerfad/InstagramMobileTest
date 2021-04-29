@@ -1,7 +1,6 @@
 package jdi;
 
 import com.epam.jdi.light.mobile.elements.common.MobileFileManager;
-import com.epam.jdi.tools.Timer;
 import io.appium.java_client.AppiumDriver;
 import jdi.setup.TestInit;
 import org.testng.annotations.AfterClass;

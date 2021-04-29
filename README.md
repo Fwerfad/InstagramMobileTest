@@ -1,10 +1,7 @@
-It's a project containing 4 tests on Instagram app:  
-1. Test for log in using credos in User class  
-2. Test for log in using google credos
-3. Post using camera
-4. Post using picture in resources/truecat.jpg  
+It's a project containing 4 tests on Instagram app:
+1. Post using camera
+2. Post using picture in resources/truecat.jpg  
 
-To run them, you need to set credos for DEFAULT_USER in User class  
 Requirements:  
 Appium 1.20.2  
 Java 8  
