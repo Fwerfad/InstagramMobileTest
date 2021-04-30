@@ -20,13 +20,13 @@ public class NativeMobileTests extends TestInit {
     final String FILE_NAME = "resources/truecat.jpg";
 
     @Test
-    public void newPostTest() throws InterruptedException {
+    public void newPostTest() {
         startPage.loginUsingGoogleCredos.click();
         postTestLogic(true);
     }
 
     @Test
-    public void newPostUsingDownloadedPhotoTest() throws IOException, InterruptedException {
+    public void newPostUsingDownloadedPhotoTest() throws IOException {
         startPage.loginUsingGoogleCredos.click();
         File file = new File(FILE_NAME);
         MobileFileManager.pushFile(PATH, file);
@@ -41,7 +41,7 @@ public class NativeMobileTests extends TestInit {
         executeScript("mobile: shell", args);
     }
 
-    public static void postTestLogic(boolean useCamera) throws InterruptedException {
+    public static void postTestLogic(boolean useCamera) {
         newPostPageObject.startNewPostCreation();
         if (useCamera) {
             newPostPageObject.useCamera();

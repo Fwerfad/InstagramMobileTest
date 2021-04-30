@@ -23,9 +23,6 @@ public class NewPostPageObject {
     @MobileFindBy(id = "com.instagram.android:id/save")
     public MobileAppUIElement othersNextButton;
 
-    @MobileFindBy(id = "com.instagram.android:id/caption_text_view")
-    public TextField postTextField;
-
     @MobileFindBy(id = "com.instagram.android:id/gallery_folder_menu_alt")
     public MobileAppUIElement openGalleryButton;
 
@@ -59,10 +56,8 @@ public class NewPostPageObject {
         newPostPageObject.nextButton.click();
     }
 
-    public void finishPost() throws InterruptedException {
-        new Timer(1000L).wait(() ->
+    public void finishPost() {
+        new Timer(5000L).wait(() ->
                 newPostPageObject.nextButton.click());
-        Thread.sleep(5000);
-        newPostPageObject.nextButton.click();
     }
 }

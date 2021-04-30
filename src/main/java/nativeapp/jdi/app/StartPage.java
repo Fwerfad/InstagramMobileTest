@@ -18,6 +18,6 @@ public class StartPage {
     @MobileFindBy(xpath = "//*[@resource-id='com.instagram.android:id/language_locale_list']/*[1]")
     public MobileAppUIElement englishLanguage;
 
-    @MobileFindBy(xpath = "//*[@resource-id='com.google.android.gms:id/credential_picker_options']/*[1]")
+    @MobileFindBy(xpath = "//*[@resource-id='com.google.android.gms:id/credential_picker_options']/*[3]")
     public MobileAppUIElement loginUsingGoogleCredos;
 }
